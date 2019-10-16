@@ -47,9 +47,7 @@ void setup()
 
 
 void sendInitial(){
-    String json;
-
-  
+    String json; 
     const size_t capacity = 2*JSON_ARRAY_SIZE(1) + 2*JSON_OBJECT_SIZE(3) + JSON_OBJECT_SIZE(4);
     DynamicJsonDocument doc(capacity);
 
@@ -104,7 +102,6 @@ void sendUpdate(){
   Serial.println(httpCode);
   Serial.println(payload);  
   http.end();
-  Serial.println("end"); 
 }
   
 
@@ -122,19 +119,12 @@ void loop()
   {
    motion = digitalRead(pirPin);
    servo.write(10);
-   Serial.println("Alarm detected!"); 
-   Serial.print("motion ");
-   Serial.println(motion);
-
    changeOccupyance(true);
-   delay(1000); 
   } 
   else 
   {
     servo.write(90);
     changeOccupyance(false); 
-    Serial.println("no trigger"); //enable for debugging of no event being triggered
-    delay(1000); 
   }
 }
 
